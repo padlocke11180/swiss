@@ -279,7 +279,7 @@ class PlinkLDFinder():
 
     # Use plink1.9 to calculate LD - we'll feed it VCF lines directly to its STDIN.
     tmpout = tempfile.mktemp(dir=os.getcwd())
-    plink_cmd = "{plink} --vcf /dev/fd/0 --r2 gz dprime with-freqs yes-really --ld-snp {0} --ld-window-kb 99999 --ld-window 99999 --threads 1 " \
+    plink_cmd = "{plink} --vcf /dev/fd/0 --r2 gz dprime with-freqs yes-really --double-id --ld-snp {0} --ld-window-kb 99999 --ld-window 99999 --threads 1 " \
       "--ld-window-r2 {min_r2} --out {1}".format(variant_hash,tmpout,plink=self.settings.plink_path,min_r2=min_r2)
     proc_ld = Popen(
       plink_cmd,
